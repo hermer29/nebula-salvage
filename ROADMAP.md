@@ -9,10 +9,10 @@
 - [x] Включить флаги компилятора: `-Wall -Wextra -Wpedantic -Werror`
 - [x] Добавить опциональные санитайзеры (Address, Undefined, Thread) в CMake
 - [x] Настроить `clang-format` и базовый `.clang-tidy`
-- [ ] Реализовать `main.cpp` с инициализацией окна Raylib
-- [ ] Реализовать игровой цикл с измерением delta time через `std::chrono`
-- [ ] Добавить `assert` для инвариантов игрового цикла (delta time > 0, окно открыто)
-- [ ] Вывести FPS и delta time в заголовок окна или debug-оверлей
+- [x] Реализовать `main.cpp` с инициализацией окна Raylib
+- [x] Реализовать игровой цикл с измерением delta time через `std::chrono`
+- [x] Добавить `assert` для инвариантов игрового цикла (delta time > 0, окно открыто)
+- [x] Вывести FPS и delta time в заголовок окна или debug-оверлей
 
 ## Фаза 1 — Platform Wrappers (RAII)
 
