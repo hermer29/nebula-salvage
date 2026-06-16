@@ -1,0 +1,36 @@
+option(ENABLE_ASAN  "Enable AddressSanitizer"     OFF)
+option(ENABLE_UBSAN "Enable UndefinedBehaviorSanitizer" OFF)
+option(ENABLE_TSAN  "Enable ThreadSanitizer"      OFF)
+# ASan и TSan нельзя включать одновременно
+if(ENABLE_ASAN AND ENABLE_TSAN)
+    message(FATAL_ERROR "AddressSanitizer и ThreadSanitizer несовместимы")
+endif()
+function(enable_sanitizers target)
+    if(NOT (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU"))
+        if(ENABLE_ASAN OR ENABLE_UBSAN OR ENABLE_TSAN)
+            message(WARNING "Санитайзеры поддерживаются в основном на Clang/GCC")
+        endif()
+        return()
+    endif()
+    set(sanitizers "")
+    if(ENABLE_ASAN)
+        list(APPEND sanitizers address)
+    endif()
+    if(ENABLE_UBSAN)
+        list(APPEND sanitizers undefined)
+    endif()
+    if(ENABLE_TSAN)
+        list(APPEND sanitizers thread)
+    endif()
+    if(NOT sanitizers)
+        return()
+    endif()
+    list(JOIN sanitizers "," sanitizer_list)
+    target_compile_options(${target} PRIVATE
+        -fno-omit-frame-pointer
+        -fsanitize=${sanitizer_list}
+    )
+    target_link_options(${target} PRIVATE
+        -fsanitize=${sanitizer_list}
+    )
+endfunction()

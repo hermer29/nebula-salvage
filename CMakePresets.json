@@ -1,0 +1,40 @@
+{
+      "version": 3,
+      "cmakeMinimumRequired": {
+        "major": 4,
+        "minor": 3,
+        "patch": 0
+      },
+      "configurePresets": [
+        {
+          "name": "default",
+          "displayName": "Default Config",
+          "description": "Builds the project",
+          "generator": "MinGW Makefiles",
+          "binaryDir": "${sourceDir}/build/${presetName}",
+          "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Debug",
+            "CMAKE_POLICY_VERSION_MINIMUM": "3.5",
+            "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+          }
+        },
+        {
+          "name": "asan",
+          "inherits": "default",
+          "displayName": "Debug + AddressSanitizer",
+          "cacheVariables": {
+            "ENABLE_ASAN": "ON"
+          }
+        }
+      ],
+      "buildPresets": [
+        {
+          "name": "default",
+          "configurePreset": "default"
+        },
+        {
+          "name": "asan",
+          "configurePreset": "asan"
+        }
+      ]
+    }
