@@ -16,7 +16,7 @@
 
 ## Фаза 1 — Platform Wrappers (RAII)
 
-- [ ] Создать класс `Window` с RAII-владением окном Raylib
+- [x] Создать класс `Window` с RAII-владением окном Raylib
 - [ ] Создать класс `Texture`: загрузка из `std::string_view`, освобождение в деструкторе
 - [ ] Запретить копирование `Texture`, реализовать move-конструктор с `noexcept`
 - [ ] Реализовать оператор присваивания `Texture` через copy-and-swap

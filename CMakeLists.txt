@@ -20,7 +20,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEAS
 
 
 # Грузим все заголовки в переменную hdrs и cpp в srcs
-file(GLOB hdrs "src/*.h")
+file(GLOB hdrs "src/*.hpp")
 file(GLOB srcs "src/*.cpp")
 
 # компилим все исходники
