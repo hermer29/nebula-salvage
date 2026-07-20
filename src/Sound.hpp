@@ -10,10 +10,15 @@ namespace nebula_salvage
             Sound(Sound&&) noexcept;
             Sound(const Sound&) = delete;
             Sound& operator=(const Sound&) = delete;
-            Sound& operator=(Sound);
+            Sound& operator=(Sound) noexcept;
             ~Sound() noexcept;
 
         private:
-            ::Sound sound;
+            ::Sound sound{};
+            friend void swap(Sound& a, Sound& b) noexcept;
     };
+
+    inline void swap(Sound& a, Sound& b) noexcept {
+        std::swap(a.sound, b.sound);
+    }
 }
